@@ -1,11 +1,193 @@
 //Creating a variable using the $ symbol
 $primary-color: #000c43;
+$secondary-color: #ffb300;
+$text-color: #fff;
+
+* {
+    box-sizing: border-box; //ensures that padding does not affect the boundaries
+}
 
 /*body - note as you are making changes to the code look out for the green comments from Sass
 to make sure there are no errors*/
 
 body {
     background: $primary-color;
-    color: #fff;
+    color: $text-color;
+    height: 100%;
+    margin: 0;
+    //font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    line-height: 1.5;
+}
+
+#particles-js
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 
 }
+
+//Headings
+h1, h2, h3 {
+    margin: 0;
+
+    &.lg-heading {
+        font-size: 5rem; //multiplier of html tag font size [16px]
+        color: $secondary-color;
+        //background: darken($primary-color, 3);
+        text-align: center;
+        font-weight: 900;
+        padding-top: 20%;
+        font-family: 'Raleway', sans-serif;
+        background: rgba($primary-color, 10);
+    }
+
+    &.sm-heading {
+       margin-bottom: 2rem;
+       color: $text-color;
+       //padding: 0.2rem 1rem;
+       background: rgba($primary-color, 10);
+       font-size: 1.75rem;
+       padding-left: 27%;
+       padding-right: 27%;
+       text-align: center;
+       font-weight: 400;
+       font-family: 'Raleway', sans-serif;
+    }
+}
+
+header {
+    position: fixed; 
+    z-index: 2; //how close to you an element is
+    width: 100%;
+
+}
+
+.text-secondary {
+    color: $text-color;
+
+}
+
+// Formatting the Links in General 
+a {
+    text-decoration: none;
+    color: $text-color;
+}
+ a:hover{
+    color: $secondary-color;
+ }
+
+ // Formatting the Navigation Bar
+.nav-list{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 50px;
+    width: 100%;
+    padding-left: 20%;
+    padding-right: 20%;
+ }
+
+.content{
+    display: flex;
+    column-gap: 40px;
+    justify-content: space-between;
+    margin-top: 30px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 200;
+    font-size: 15px;
+    background: rgba($primary-color, 0.5);
+  }
+
+.social-media-icons{
+    display: flex;
+    column-gap: 40px;
+    align-self: center;
+    margin-top: 30px;
+    color: $text-color;
+  }
+
+.fa-linkedin:hover, .fa-github:hover{
+    color: $secondary-color !important;
+  }
+
+/*===================*/
+/* BOB
+/*===================*/
+
+@-webkit-keyframes bob-on-hover {
+    0% {
+      -webkit-transform: translateY(-8px);
+      transform: translateY(-8px);
+    }
+    50% {
+      -webkit-transform: translateY(-4px);
+      transform: translateY(-4px);
+    }
+    100% {
+      -webkit-transform: translateY(-8px);
+      transform: translateY(-8px);
+    }
+  }
+  @keyframes bob-on-hover {
+    0% {
+      -webkit-transform: translateY(-8px);
+      transform: translateY(-8px);
+    }
+    50% {
+      -webkit-transform: translateY(-4px);
+      transform: translateY(-4px);
+    }
+    100% {
+      -webkit-transform: translateY(-8px);
+      transform: translateY(-8px);
+    }
+  }
+  @-webkit-keyframes bob-on-hover-float {
+    100% {
+      -webkit-transform: translateY(-8px);
+      transform: translateY(-8px);
+    }
+  }
+  @keyframes bob-on-hover-float {
+    100% {
+      -webkit-transform: translateY(-8px);
+      transform: translateY(-8px);
+    }
+  }
+  .bob-on-hover {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  }
+  .bob-on-hover:hover, .bob-on-hover:focus, .bob-on-hover:active {
+    -webkit-animation-name: bob-on-hover-float, bob-on-hover;
+    animation-name: bob-on-hover-float, bob-on-hover;
+    -webkit-animation-duration: .3s, 1.5s;
+    animation-duration: .3s, 1.5s;
+    -webkit-animation-delay: 0s, .3s;
+    animation-delay: 0s, .3s;
+    -webkit-animation-timing-function: ease-out, ease-in-out;
+    animation-timing-function: ease-out, ease-in-out;
+    -webkit-animation-iteration-count: 1, infinite;
+    animation-iteration-count: 1, infinite;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-direction: normal, alternate;
+    animation-direction: normal, alternate;
+  }
+
+.next {
+  display: flex;
+  justify-content: center;
+  padding-top: 14%;
+}
+
+
+
+ 

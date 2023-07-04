@@ -1,0 +1,11 @@
+//Creating a variable using the $ symbol
+$primary-color: #000c43;
+$secondary-color: #ffb300;
+$text-color: #fff;
+
+* {
+    box-sizing: border-box; //ensures that padding does not affect the boundaries
+}
+
+/*body - note as you are making changes to the code look out for the green comments from Sass
+to make sure there are no errors*/
