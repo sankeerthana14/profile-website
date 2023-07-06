@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth !important;
+}
+
 /*body - note as you are making changes to the code look out for the green comments from Sass
 to make sure there are no errors*/
 body {
@@ -9,8 +13,11 @@ body {
   color: #fff;
   height: 100%;
   margin: 0;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
   line-height: 1.5;
+}
+
+html:focus-within {
+  scroll-behavior: smooth !important;
 }
 
 #particles-js {
@@ -21,6 +28,11 @@ body {
   bottom: 0;
 }
 
+#hide-nav-bar {
+  position: fixed;
+  top: 0;
+}
+
 h1, h2, h3 {
   margin: 0;
 }
@@ -29,7 +41,7 @@ h1.lg-heading, h2.lg-heading, h3.lg-heading {
   color: #ffb300;
   text-align: center;
   font-weight: 900;
-  padding-top: 20%;
+  padding-top: 15%;
   font-family: "Raleway", sans-serif;
   background: #000c43;
 }
@@ -46,8 +58,8 @@ h1.sm-heading, h2.sm-heading, h3.sm-heading {
 }
 
 header {
-  position: fixed;
-  z-index: 2;
+  position: sticky;
+  z-index: 1;
   width: 100%;
 }
 
@@ -169,6 +181,114 @@ a:hover {
   display: flex;
   justify-content: center;
   padding-top: 14%;
+  z-index: 1;
+}
+
+#about-me-page, #testimonials-page {
+  min-height: 500px;
+  margin-top: 10%;
+}
+
+.pic {
+  display: flex;
+  flex-direction: column;
+  padding-top: 50px;
+  padding-right: 20px;
+}
+
+.profile-pic {
+  justify-content: center;
+  width: 400px;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 52%;
+  border-style: solid;
+  border-width: 0.5rem;
+  border-color: #fff;
+  z-index: 10;
+}
+
+.profile-pic img {
+  width: 105%;
+  padding-right: 15px;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+}
+.container .left-col {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  background-color: #ffb300;
+  padding-top: 10%;
+}
+.container .right-col {
+  flex: 1;
+  background-color: #000c43;
+  height: 100vh;
+}
+.container .right-col .bio-name {
+  color: #fff;
+  text-align: center;
+  font-family: "Raleway", sans-serif;
+  font-size: 80px;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-top: 3%;
+}
+.container .right-col .bio-text {
+  color: #fff;
+  text-align: left;
+  font-family: "Raleway", sans-serif;
+  font-size: 20px;
+  padding-left: 12%;
+  padding-right: 10%;
+  text-align: center;
+}
+.container .resume-pdf {
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+}
+.container .fa-download:hover {
+  color: #ffb300 !important;
+}
+
+@media (max-width: 500px) {
+  .container {
+    flex-direction: column;
+  }
+}
+#about-me-page {
+  height: fit-content;
+}
+
+.overlay {
+  position: relative;
+}
+
+.next-about-me {
+  position: absolute;
+  top: 0;
+  display: flex;
+  padding-top: 50%;
+  padding-left: 48.9%;
+  justify-content: center;
+  z-index: 1;
+}
+
+#testimonials-page {
+  box-sizing: border-box;
+}
+
+.testimonial-header {
+  display: flex;
+  justify-content: center;
+  font-family: "Raleway", sans-serif;
+  font-size: 30px;
 }
 
 /*# sourceMappingURL=main.css.map */

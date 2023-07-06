@@ -10,5 +10,8 @@
   "license": "MIT",
   "devDependencies": {
     "sass": "^1.63.6"
+  },
+  "dependencies": {
+    "universalsmoothscroll": "^6.1.0"
   }
 }

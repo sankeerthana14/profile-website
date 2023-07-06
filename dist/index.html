@@ -5,22 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/46043f6718.js" crossorigin="anonymous"></script>
+    <script src = "assets/universalsmoothscroll-min.js"></script> 
     <link rel="stylesheet" href="css/main.css">
     <title>Sankeerthana Satini</title>
-
 </head>
 <body>
     <header>
         <!-- Creating the Navigation Bar -->
-        <nav class="top-nav-bar">
+        <nav id="top-nav-bar">
             <div class="nav-list">
                 <style>
                     @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap');
                   </style>
                 <div class="content">
-                    <a href="about-me.html">ABOUT ME</a>
-                    <a href="/skills.html">SKILLS</a>
-                    <a href="/projects.html">PROJECTS</a>
+                    <a href="#about-me-page" class="about-me">ABOUT ME</a>
+                    <a href="#skills-page">SKILLS</a>
+                    <a href="#projects">PROJECTS</a>
                     
                 </div>
                 <div class="social-media-icons">
@@ -28,9 +28,9 @@
                     <a href="https://www.linkedin.com/in/satinisankeerthana" target="_blank" class="bob-on-hover"><i class="fa-brands fa-linkedin fa-2x" style="color: #ffffff;"></i></a>
                 </div>
                 <div class="content">
-                    <a href="/testimonials.html">TESTIMONIALS</a>
-                    <a href="/work.html">WORK</a>
-                    <a href="/contact.html">CONTACT</a>
+                    <a href="#testimonials-page">TESTIMONIALS</a>
+                    <a href="#work">WORK</a>
+                    <a href="#contact">CONTACT</a>
                 </div>
             </div>
           </nav>
@@ -50,7 +50,7 @@
     <!-- NOTE: Links can only be placed in the header tag in HTML-->
     <header>
         <div class="next">
-            <a href="about-me.html" class="next-button"><i class="fa-solid fa-circle-chevron-down fa-beat fa-2x" style="color: #ffb300;"></i></a>
+            <a href="#about-me-page" class="next-button"><i class="fa-solid fa-circle-chevron-down fa-beat fa-2x" style="color: #ffb300;"></i></a>
         </div>
     </header>
     <!-- Link to Background Dynamic Particles JS Script -->
@@ -62,5 +62,59 @@
     <!-- Link to general JS Script -->
     <script src="js/main.js"></script>
 </body>
+
+
+<section id="about-me-page">
+    <div class="overlay">
+        <div class="container">
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap');
+              </style>
+            <div class="left-col">
+                <!-- Adding a Profile Picture -->
+                <div class="pic">
+                    <div class="profile-pic">
+                        <img src="assets/profile-pic.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="right-col">
+                <h1 class="bio-name">Sankeerthana Satini</h1>
+                <div class="bio-text">Hello there! I am a Computer Science Graduate from the Nanyang Technological University (NTU) with a specialization in Artificial Intelligence. <br><br>My 
+                    interests include Computer Vision, Machine Learning and Processing and Obtaining insights from data. <br><br> I'm currently an 
+                    independent Machine Learning Engineer offering services in the field of Computer Vision, Machine Learning and Deep Learning along with 
+                    Data Processing, Mining and Visualization.<br><br> Feel free to download my resume over here:
+                </div>
+                <div class="resume-pdf">
+                    <a href ="assets/Resume_Sankeerthana_Final.pdf" download ="sankeerthana_satini_resume"><i class="fa-solid fa-download fa-beat fa-2x" style="color: #ffffff;"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="next-about-me">
+            <header>
+                <div class="next">
+                    <a href="#skills-page" class="next-button"><i class="fa-solid fa-circle-chevron-down fa-2x" style="color: #ffffff"></i></a>
+                </div>
+            </header>
+        </div>    
+    </div>
+</section>
+
+<section id="skills-page">
+    <div class="skills-header"><h1>Skills</h1></div>
+    
+</section>
+<section id="projects-page">
+    <div class="projects-header"><h1>Projects</h1></div>
+</section>
+<section id="testimonials-page">
+    <div class="testimonial-header"><h1>Testimonials</h1></div>
+</section>
+<section id="work-page">
+    <div class="work-header"><h1>Work</h1></div>
+</section>
+<section id="contact-page">
+    <div class="contact-header"><h1>Contact</h1></div>
+</section>
 </html>
 
