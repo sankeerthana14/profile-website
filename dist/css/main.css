@@ -184,7 +184,7 @@ a:hover {
   z-index: 1;
 }
 
-#about-me-page, #testimonials-page {
+#about-me-page {
   min-height: 500px;
   margin-top: 10%;
 }
@@ -266,29 +266,79 @@ a:hover {
   height: fit-content;
 }
 
-.overlay {
-  position: relative;
-}
-
-.next-about-me {
-  position: absolute;
-  top: 0;
-  display: flex;
-  padding-top: 50%;
-  padding-left: 48.9%;
-  justify-content: center;
-  z-index: 1;
-}
-
 #testimonials-page {
+  min-height: 500px;
+  margin-top: 5%;
+  margin-bottom: 16%;
   box-sizing: border-box;
+  height: 100%;
+  background-color: #ffb300;
 }
-
-.testimonial-header {
+#testimonials-page .testimonial-header {
   display: flex;
   justify-content: center;
   font-family: "Raleway", sans-serif;
   font-size: 30px;
+  padding-top: 20px;
+}
+#testimonials-page .testimonial-position {
+  display: flex;
+  justify-content: center;
+  padding-top: 22%;
+  padding-left: 50%;
+}
+#testimonials-page .testimonial-content {
+  height: 70vh;
+  width: 90vh;
+  transform: translate(-50%, -50%);
+  border: 7px solid #fff;
+  top: 50%;
+  left: 50%;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 10px 25px 30px rgba(30, 30, 200, 0.3);
+  background-color: #000c43;
+}
+#testimonials-page .testimonial-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  animation: slide 16s infinite;
+}
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(0);
+  }
+  30% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(-100%);
+  }
+  55% {
+    transform: translateX(-200%);
+  }
+  75% {
+    transform: translateX(-200%);
+  }
+  80% {
+    transform: translateX(-300%);
+  }
+  100% {
+    transform: translateX(-300%);
+  }
+}
+
+.testimonial-text {
+  text-align: center;
+  padding-left: 5%;
+  padding-right: 5%;
+  color: #fff;
+  font-family: "Raleway", sans-serif;
+  font-weight: 900;
 }
 
 /*# sourceMappingURL=main.css.map */
