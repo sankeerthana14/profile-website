@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth !important;
+}
+
 /*body - note as you are making changes to the code look out for the green comments from Sass
 to make sure there are no errors*/
 body {
@@ -9,8 +13,11 @@ body {
   color: #fff;
   height: 100%;
   margin: 0;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
   line-height: 1.5;
+}
+
+html:focus-within {
+  scroll-behavior: smooth !important;
 }
 
 #particles-js {
@@ -21,6 +28,11 @@ body {
   bottom: 0;
 }
 
+#hide-nav-bar {
+  position: fixed;
+  top: 0;
+}
+
 h1, h2, h3 {
   margin: 0;
 }
@@ -29,7 +41,7 @@ h1.lg-heading, h2.lg-heading, h3.lg-heading {
   color: #ffb300;
   text-align: center;
   font-weight: 900;
-  padding-top: 20%;
+  padding-top: 15%;
   font-family: "Raleway", sans-serif;
   background: #000c43;
 }
@@ -46,8 +58,8 @@ h1.sm-heading, h2.sm-heading, h3.sm-heading {
 }
 
 header {
-  position: fixed;
-  z-index: 2;
+  position: sticky;
+  z-index: 1;
   width: 100%;
 }
 
@@ -169,6 +181,164 @@ a:hover {
   display: flex;
   justify-content: center;
   padding-top: 14%;
+  z-index: 1;
+}
+
+#about-me-page {
+  min-height: 500px;
+  margin-top: 10%;
+}
+
+.pic {
+  display: flex;
+  flex-direction: column;
+  padding-top: 50px;
+  padding-right: 20px;
+}
+
+.profile-pic {
+  justify-content: center;
+  width: 400px;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 52%;
+  border-style: solid;
+  border-width: 0.5rem;
+  border-color: #fff;
+  z-index: 10;
+}
+
+.profile-pic img {
+  width: 105%;
+  padding-right: 15px;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+}
+.container .left-col {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  background-color: #ffb300;
+  padding-top: 10%;
+}
+.container .right-col {
+  flex: 1;
+  background-color: #000c43;
+  height: 100vh;
+}
+.container .right-col .bio-name {
+  color: #fff;
+  text-align: center;
+  font-family: "Raleway", sans-serif;
+  font-size: 80px;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-top: 3%;
+}
+.container .right-col .bio-text {
+  color: #fff;
+  text-align: left;
+  font-family: "Raleway", sans-serif;
+  font-size: 20px;
+  padding-left: 12%;
+  padding-right: 10%;
+  text-align: center;
+}
+.container .resume-pdf {
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+}
+.container .fa-download:hover {
+  color: #ffb300 !important;
+}
+
+@media (max-width: 500px) {
+  .container {
+    flex-direction: column;
+  }
+}
+#about-me-page {
+  height: fit-content;
+}
+
+#testimonials-page {
+  min-height: 500px;
+  margin-top: 5%;
+  margin-bottom: 16%;
+  box-sizing: border-box;
+  height: 100%;
+  background-color: #ffb300;
+}
+#testimonials-page .testimonial-header {
+  display: flex;
+  justify-content: center;
+  font-family: "Raleway", sans-serif;
+  font-size: 30px;
+  padding-top: 20px;
+}
+#testimonials-page .testimonial-position {
+  display: flex;
+  justify-content: center;
+  padding-top: 22%;
+  padding-left: 50%;
+}
+#testimonials-page .testimonial-content {
+  height: 70vh;
+  width: 90vh;
+  transform: translate(-50%, -50%);
+  border: 7px solid #fff;
+  top: 50%;
+  left: 50%;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 10px 25px 30px rgba(30, 30, 200, 0.3);
+  background-color: #000c43;
+}
+#testimonials-page .testimonial-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  animation: slide 16s infinite;
+}
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(0);
+  }
+  30% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(-100%);
+  }
+  55% {
+    transform: translateX(-200%);
+  }
+  75% {
+    transform: translateX(-200%);
+  }
+  80% {
+    transform: translateX(-300%);
+  }
+  100% {
+    transform: translateX(-300%);
+  }
+}
+
+.testimonial-text {
+  text-align: center;
+  padding-left: 5%;
+  padding-right: 5%;
+  color: #fff;
+  font-family: "Raleway", sans-serif;
+  font-weight: 900;
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -7,6 +7,10 @@ $text-color: #fff;
     box-sizing: border-box; //ensures that padding does not affect the boundaries
 }
 
+html {
+  scroll-behavior: smooth !important;
+}
+
 /*body - note as you are making changes to the code look out for the green comments from Sass
 to make sure there are no errors*/
 
@@ -15,9 +19,12 @@ body {
     color: $text-color;
     height: 100%;
     margin: 0;
-    //font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    //font-family: Verdana, Geneva, Tahoma, sans-serif;
     line-height: 1.5;
+}
+
+html:focus-within {
+  scroll-behavior: smooth !important;
 }
 
 #particles-js
@@ -30,6 +37,10 @@ body {
 
 }
 
+#hide-nav-bar{
+  position: fixed;
+  top:0;
+}
 //Headings
 h1, h2, h3 {
     margin: 0;
@@ -40,7 +51,7 @@ h1, h2, h3 {
         //background: darken($primary-color, 3);
         text-align: center;
         font-weight: 900;
-        padding-top: 20%;
+        padding-top: 15%;
         font-family: 'Raleway', sans-serif;
         background: rgba($primary-color, 10);
     }
@@ -59,9 +70,9 @@ h1, h2, h3 {
     }
 }
 
-header {
-    position: fixed; 
-    z-index: 2; //how close to you an element is
+header{
+    position: sticky;  //solved the naviagtion and next button coming into section issue
+    z-index: 1; //how close to you an element is
     width: 100%;
 
 }
@@ -81,6 +92,8 @@ a {
  }
 
  // Formatting the Navigation Bar
+
+
 .nav-list{
     display:flex;
     justify-content: center;
@@ -186,8 +199,182 @@ a {
   display: flex;
   justify-content: center;
   padding-top: 14%;
+  z-index: 1;
 }
 
+#about-me-page{
+  min-height: 500px;
+  margin-top: 10%;
+}
+//Profile Picture
+.pic {
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+    padding-right: 20px;
+}
+.profile-pic {
+    justify-content: center;
+    width: 400px;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 52%;
+    border-style: solid;
+    border-width: 0.5rem;
+    border-color: $text-color;
+    z-index: 10;
+}
 
+.profile-pic img{
+    width: 105%;
+    padding-right: 15px;
+}
 
- 
+.container {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    //overflow-y: scroll;
+    //scroll-snap-type: y mandatory;
+
+    .left-col {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        background-color: $secondary-color;
+        padding-top: 10%;
+    }
+    
+    .right-col{
+        flex: 1;
+        background-color: $primary-color;
+        height: 100vh;
+        
+
+        .bio-name {
+            color: $text-color;
+            text-align: center;
+            font-family: 'Raleway', sans-serif;
+            font-size: 80px;
+            padding-left: 2%;
+            padding-right: 2%;
+            padding-top: 3%;
+        }
+        
+        .bio-text {
+            color: $text-color;
+            text-align: left;
+            font-family: 'Raleway', sans-serif;
+            font-size: 20px;
+            padding-left: 12%;
+            padding-right: 10%;
+            text-align: center;
+            
+        }
+    }
+
+    .resume-pdf {
+        display: flex;
+        justify-content: center;
+        padding: 50px;
+
+    }
+
+    .fa-download:hover{
+        color: #ffb300 !important;
+    }
+}
+
+//when the screen size becomes small - ie for mobile phones etc.
+@media (max-width: 500px) {
+    .container {
+        flex-direction: column;
+    }
+}
+
+#about-me-page{
+  height:fit-content;
+}
+
+//Testimonials Page
+#testimonials-page{
+  min-height: 500px;
+  margin-top: 5%;
+  margin-bottom: 16%;
+  box-sizing: border-box; 
+  height: 100%;
+  background-color: $secondary-color;
+
+  .testimonial-header{
+    display: flex;
+    justify-content: center;
+    font-family: 'Raleway', sans-serif;
+    font-size: 30px;
+    padding-top: 20px;
+  }
+  .testimonial-position {
+    display: flex;
+    justify-content: center;
+    padding-top: 22%;
+    padding-left: 50%;
+  }
+  
+  .testimonial-content {
+    height: 70vh;
+    width: 90vh;
+    transform: translate(-50%,-50%);
+   ;
+    border: 7px solid $text-color;
+    top: 50%;
+    left: 50%;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 10px 25px 30px rgba(30,30,200,0.3);
+    background-color: $primary-color;
+  }
+  
+  .testimonial-wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    animation: slide 16s infinite;
+  }
+  @keyframes slide{
+    0%{
+        transform: translateX(0);
+    }
+    25%{
+        transform: translateX(0);
+    }
+    30%{
+        transform: translateX(-100%);
+    }
+    50%{
+        transform: translateX(-100%);
+    }
+    55%{
+        transform: translateX(-200%);
+    }
+    75%{
+        transform: translateX(-200%);
+    }
+    80%{
+        transform: translateX(-300%);
+    }
+    100%{
+        transform: translateX(-300%);
+    }
+  }
+   
+}
+
+.testimonial-text {
+  text-align: center;
+  padding-left: 5%;
+  padding-right: 5%;
+  color: $text-color;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 900;
+
+}
+
