@@ -12,13 +12,13 @@ prev.addEventListener('click', function(){
         direction = 1;
     }
     carousel.style.justifyContent = 'flex-end';
-    slider.style.transform = 'translate(33.33%)';
+    slider.style.transform = 'translate(50%)';
 });
 
 next.addEventListener('click', function(){
     direction = -1;
     carousel.style.justifyContent = 'flex-start';
-    slider.style.transform = 'translate(-33.33%)';
+    slider.style.transform = 'translate(-50%)';
 });
 
 slider.addEventListener('transitionend', function(){
