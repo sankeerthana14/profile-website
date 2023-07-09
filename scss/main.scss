@@ -392,3 +392,98 @@ a {
     font-weight: bolder;
   }
 }
+
+//Contacts Page
+.contact-heading{
+  display: flex;
+  justify-content: center;
+  font-family: 'Raleway', sans-serif;
+  font-size: 30px;
+  padding-top: 20px;
+}
+.subheading {
+  display: flex;
+  justify-content: center;
+  font-family: 'Raleway', sans-serif;
+  font-size: 25px;
+}
+
+.contact-info{
+  margin-bottom: 16%;
+  box-sizing: border-box; 
+  font-family: 'Raleway', sans-serif;
+  align-items: center;
+  display:flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  padding-left: 23%;
+  padding-right: 7%;
+  padding-top: 5%;
+}
+
+.card {
+  background-color: $secondary-color;
+  text-align: center;
+  padding: 0 20px;
+  margin: 0 10px;
+  width: calc(33% - 20px);
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: $text-color;
+  cursor: pointer;
+
+  .contact-icon{
+    display: flex;
+    justify-content: center;
+    padding-top:35%;
+  }
+}
+
+.card-icon {
+  font-size: 10px;
+  background: $secondary-color;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  line-height: 10px !important;
+  border-radius: 50%;
+  transition: 0.5s linear;
+}
+
+.card:hover, .card-icon{
+  background: none;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.card p {
+  margin-top: 20px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  max-height: 0;
+  opacity: 0;
+  transition: 0.5s linear;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.card:hover p {
+  max-height: 40px;
+  opacity: 1;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+@media screen and (max-width:800px){
+  .contact-info{
+    flex-direction: column;
+  }
+  .card{
+    width:100%;
+    max-width: 300px;
+    margin: 10px 0;
+  }
+}
