@@ -11,6 +11,7 @@ html {
   scroll-behavior: smooth !important;
 }
 
+//Landing Page
 /*body - note as you are making changes to the code look out for the green comments from Sass
 to make sure there are no errors*/
 
@@ -92,8 +93,6 @@ a {
  }
 
  // Formatting the Navigation Bar
-
-
 .nav-list{
     display:flex;
     justify-content: center;
@@ -202,6 +201,7 @@ a {
   z-index: 1;
 }
 
+//About-Me Page
 #about-me-page{
   min-height: 500px;
   margin-top: 10%;
@@ -486,4 +486,45 @@ a {
     max-width: 300px;
     margin: 10px 0;
   }
+}
+
+//Skills Page
+#skills-page{
+  height: 100%;
+  font-family: 'Raleway', sans-serif;
+
+  .container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    grid-column-gap: 5%;
+    padding-bottom: 10%;
+    padding-left: 3%;
+    padding-right: 5%;
+    font-size: 1.2rem;
+
+    .skill-box {
+      //display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+.skills-header {
+  display: flex;
+  justify-content: center;
+  font-family: 'Raleway', sans-serif;
+  font-size: 30px;
+  padding-top: 3%;
+}
+
+.skill-title {
+  color: $secondary-color;
+  position: sticky;
+}
+
+.skills-icon{
+  padding-bottom: 5%;
 }
