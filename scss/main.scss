@@ -299,7 +299,7 @@ a {
 //Testimonials Page
 #testimonials-page{
   min-height: 500px;
-  margin-top: 5%;
+  //margin-top: 5%;
   margin-bottom: 16%;
   box-sizing: border-box; 
   font-family: 'Raleway', sans-serif;
@@ -457,6 +457,7 @@ a {
   background: none;
   text-align: center;
   word-wrap: break-word;
+  transition: 0.5s;
 }
 
 .card p {
