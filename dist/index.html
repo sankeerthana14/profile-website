@@ -13,10 +13,16 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper@10.0.3/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/main.css">
     <title>Sankeerthana Satini</title>
+    <style>
+        .no-scroll {
+            overflow: hidden !important;
+        }
+    </style>
 </head>
 <body>
-    <header>
+    <header id="home-page">
         <!-- Creating the Navigation Bar -->
+        <div id="overlay" class="overlay"></div>
         <nav id="top-nav-bar">
             <div class="nav-list">
                 <style>
@@ -38,8 +44,81 @@
                     <a href="#contact-page">CONTACT</a>
                 </div>
             </div>
-          </nav>
+        </nav>
+        <br>
+        <div class="hamburger-menu" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <div id="menu-popup" class="menu-popup">
+            <button class="close-btn" onclick="closeMenu()">X</button>
+            <a href="#about-me-page">ABOUT ME</a>
+            <a href="#skills-page">SKILLS</a>
+            <a href="#projects-page">PROJECTS</a>
+            <a href="#testimonials-page">TESTIMONIALS</a>
+            <a href="#work-page">WORK</a>
+            <a href="#contact-page">CONTACT</a>
+        </div>
     </header>
+    <script>
+        // Hide the popup menu when the page loads
+        window.addEventListener("DOMContentLoaded", function() {
+            var menuPopup = document.getElementById("menu-popup");
+            menuPopup.style.display = "none";
+        });
+
+        function toggleMenu() {
+            var menuPopup = document.getElementById("menu-popup");
+            var overlay = document.getElementById("overlay");
+            var body = document.body;
+            var profile_pic = document.getElementById("profile-pic");
+            var homeButton = document.getElementById("home-button");
+
+            body.classList.toggle("popup-open"); // Toggle popup-open class on body
+            if (menuPopup.style.display === "none") {
+                menuPopup.style.display = "block";
+                overlay.style.display = "block";
+                profile_pic.style.display = "none";
+                homeButton.style.display = "none"; // Hide the home button
+                
+            } else {
+                menuPopup.style.display = "none";
+                overlay.style.display = "none";
+                body.classList.toggle("no-scroll");
+                homeButton.style.display = "block"; // Show the home button
+                
+            }
+        }
+
+        function closeMenu() {
+            var menuPopup = document.getElementById("menu-popup");
+            var overlay = document.getElementById("overlay");
+            var body = document.body;
+            var profile_pic = document.getElementById("profile-pic");
+            var homeButton = document.getElementById("home-button");
+
+            menuPopup.style.display = "none";
+            overlay.style.display = "none";
+            body.classList.remove("popup-open");
+            profile_pic.style.display = "block";
+            homeButton.style.display = "block"; // Show the home button
+            
+        }
+
+        // Scroll to section and close menu on link click
+        document.querySelectorAll("#menu-popup a").forEach(function(link) {
+            link.addEventListener("click", function(event) {
+                event.preventDefault();
+                var targetId = this.getAttribute("href");
+                document.querySelector(targetId).scrollIntoView({
+                    behavior: "smooth"
+                });
+                closeMenu();
+            });
+        });
+    </script>
+    
     <main id="home">
         <h1 class="lg-heading">
             Sankeerthana Satini <!--<span class="text-secondary">Satini</span>-->
@@ -67,6 +146,17 @@
 
 <!-- About-Me Page-->
 <section id="about-me-page">
+    <a href="#home-page" class="back-to-home-button"><i class="fa-solid fa-home" style="color: white;"></i></a>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        var backButton = document.getElementById('back-to-home-button');
+
+        backButton.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent the default behavior of the anchor element
+            window.location.href = 'home-page.html'; // Redirect the user to the home page
+        });
+        });
+    </script>
     <div class="container">
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap');
@@ -74,14 +164,14 @@
         <div class="left-col">
             <!-- Adding a Profile Picture -->
             <div class="pic">
-                <div class="profile-pic">
+                <div class="profile-pic"id="profile-pic">
                     <img src="assets/profile-pic.png" alt="">
                 </div>
             </div>
         </div>
         <div class="right-col">
             <h1 class="bio-name">Sankeerthana Satini</h1>
-            <div class="bio-text">Hello There! <br><br> I'm an ML Research Engineer passionate about solving pressing problems by applying ML and Computer Vision to real-world use cases. <br><br>  My work spans a wide range of end-to-end projects in different domains, ranging from 2D & 3D Object Detection and Segmentation to Incremental Learning and Applied ML as well. Please feel free to reach out regarding ideas for collaborations or for freelancing tasks! <br> <br> You can download my resume over here:
+            <div class="bio-text">Hello There! <br><br> I'm an ML Engineer passionate about solving pressing problems by applying ML and Computer Vision to real-world use cases. <br><br>  My work spans a wide range of end-to-end projects in different domains, ranging from Object Detection and ML to Data Analytics as well.<br><br>Please feel free to reach out regarding ideas for collaborations or for Data Science, Analytics, ML and Computer Vision freelancing tasks! <br> <br> You can download my resume over here:
             </div>
             <div class="resume-pdf">
                 <a href ="assets/Sankeerthana_Academic_CV.pdf" download ="sankeerthana_satini_resume"><i class="fa-solid fa-download fa-beat fa-2x" style="color: #ffffff;"></i></a>
@@ -109,7 +199,7 @@
                 <div class="skills-icon">
                     <i class="fa-solid fa-brain fa-2x" style="color: #ffffff;"></i>
                 </div>
-                <h3>Data Science & Machine Learning</h3>
+                <h3>Data Science & ML</h3>
             </div>
             <div class="skill-text"><p>Data Mining | Predictive Analytics | Unsupervised Learning | CI/CD</p></div>
         </div>
@@ -161,9 +251,9 @@
         <div class="skill-box">
         <div class="skill-title">
             <div class="skills-icon">
-                <i class="fa-solid fa-medal fa-2x" style="color: #ffffff;"></i>
+                <i class="fa-solid fa-medal fa-2x" style="color: #ffb300;"></i>
             </div>
-            <h3>ML Certification</h3>
+            <h3><a href="https://www.coursera.org/account/accomplishments/certificate/2NGN7CJXAY8F" target="_blank">ML Certification</a></h3>
         </div>
         <div class="skill-text"><p><a href="https://www.coursera.org/account/accomplishments/certificate/2NGN7CJXAY8F" target="_blank">Machine Learning Stanford University - Coursera</a></p>
         </div>
@@ -172,9 +262,9 @@
     <div class="skill-box">
         <div class="skill-title">
             <div class="skills-icon">
-                <i class="fa-solid fa-medal fa-2x" style="color: #ffffff;"></i>
+                <i class="fa-solid fa-medal fa-2x" style="color: #ffb300;"></i>
             </div>
-            <h3>Data Science & ML Certification</h3>
+            <h3><a href="https://udemy-certificate.s3.amazonaws.com/pdf/UC-43debab6-6253-4790-bc90-c9a502b4cdc3.pdf" target="_blank">Data Science & ML Certification</a></h3>
         </div>
         <div class="skill-text"><p><a href="https://udemy-certificate.s3.amazonaws.com/pdf/UC-43debab6-6253-4790-bc90-c9a502b4cdc3.pdf" target="_blank">Python for Data Science and Machine Learning - Udemy</a></p>
         </div></div>
@@ -182,25 +272,505 @@
     <div class="skill-box">
         <div class="skill-title">
             <div class="skills-icon">
-                <i class="fa-solid fa-medal fa-2x" style="color: #ffffff;"></i>
+                <i class="fa-solid fa-medal fa-2x" style="color: #ffb300;"></i>
             </div>
-            <h3>SQL Certification</h3>
+            <h3><a href="https://www.linkedin.com/learning/certificates/1bd47c2dd34ea425a16fc1d2705d12806c1a5abc3550e798e1e934fffd07ab0d?trk=backfilled_certificate" target="_blank">SQL Certification</a></h3>
         </div>
-        <div class="skill-text"><p><a href="https://www.linkedin.com/learning/certificates/1bd47c2dd34ea425a16fc1d2705d12806c1a5abc3550e798e1e934fffd07ab0d?trk=backfilled_certificate" target="_blank">SQL Essential Training - Linkedin</a></p>
+        <div class="skill-text"><p><a href="https://www.linkedin.com/learning/certificates/1bd47c2dd34ea425a16fc1d2705d12806c1a5abc3550e798e1e934fffd07ab0d?trk=backfilled_certificate" target="_blank">Course on SQL Essential Training - Linkedin Learning</a></p>
         </div></div>
+    </div>
+</section>
+
+<!-- Work Page (can add in Publications here)-->
+<section id="work-page">
+    <div class="work-header">
+        <h1>Work and Publications</h1>
+    </div>
+    <div class="timeline">
+        <div class="timeline-container left-container">
+            <img src="assets/yellow_circle.png">
+            <div class="text-box">
+                <h2>Singapore Management University (SMU)</h2>
+                <h3>Research Engineer</h3>
+                <small>Dec 2023 - Present</small>
+                <li>Developed data-loading, processing and modelling pipelines for a vision-based throat cancer
+                    diagnosis system by engineering robust object detection models.</li>
+                <li>Developed novel approaches for video classification to ensure robustness in 
+                    processing large-scale, real-world medical image data.</li>
+                <li>Currently publishing to International Conferences and journals such as International Joint
+                    Conference of AI (IJCAI) and more.</li>
+                <span class="left-container-arrow"></span>
+            </div>
+        </div>
+        <div class="timeline-container right-container">
+            <img src="assets/yellow_circle.png">
+            <div class="text-box">
+                <h2>Carecam</h2>
+                <h3>Machine Learning Engineer</h3>
+                <small>Aug 2023 - Oct 2023</small>
+                <li>Worked on a vision-based Software as a Medical Device (SaaMD) product that aids 
+                    clinicians in their diagnosis of the patient’s gait.</li>
+                <li>Solved critical bottlenecks by integrating LIDAR data.</li>
+                <li>Optimized the pipeline involving tasks like scaling, smoothing, normalization and data manipulation.</li>
+                <li>Led the migration of training and deployment codes to AWS to build a cloud solution.</li></li>
+                <span class="right-container-arrow"></span>
+            </div>
+        </div>
+        <div class="timeline-container left-container">
+            <img src="assets/yellow_circle.png">
+            <div class="text-box">
+                <h2>Asurion</h2>
+                <h3>Computer Vision Intern</h3>
+                <small>Aug 2022 - Nov 2022</small>
+                <li>Worked on developing an AI assisted Mobile Phone Insurance Product that detects 
+                    cracks and damage intensity done to a phone using YOLOv5.</li>
+                <li>Optimised the processing and modelling pipeline.</li>
+                <li>Conceptualised an automated Continuous ML Feedback Loop as part of the CI/CD process
+                    using AWS Service.</li>
+                <li>Researched and Implemented 3D Object Detection Models using Point Clouds.</li>
+                <span class="left-container-arrow"></span>
+            </div>
+        </div>
+        <div class="timeline-container right-container">
+            <img src="assets/yellow_circle.png">
+            <div class="text-box">
+                <h2>A*STAR - Institute for Infocomm Research</h2>
+                <h3>Data Scientist Intern</h3>
+                <small>May 2021 - Dec 2021</small>
+                <li>Worked on a vision-based 2D object detection system for Autonomous Service 
+                    Robots in Hospitals, through a Semi-Supervised Learning Approach.</li>
+                <li>Oversaw the training and optimization for SSD-MobileNetv2, STAC, and Unbiased Mean Teacher
+                    Model to assess Semi-Supervised and Incremental Learning efficacy.</li>
+                <br>
+                <h3>Publications</h3>
+                <li style="font-weight: bold;">International Conference on Social Robotics (ICSR) 2021</li>
+                <p style="font-style: italic;">Pahwa, R. S., Chang, R., Jie, W., <span style="font-weight: bold;">Satini, S.</span>, Viswanathan, C., Yiming, D., Jain, V., Pang, C. T.,
+                    & Wah, W. K. (1970, January 1). A survey on object detection performance with different
+                    data distributions. <a class="publication-link" target="_blank" href="https://link.springer.com/chapter/10.1007/978-3-030-
+                    90525-5_48">https://link.springer.com/chapter/10.1007/978-3-030-90525-5_48"</a></p>
+                <span class="right-container-arrow"></span>
+                <li style="font-weight: bold;">Conference on Learning Factories (CLF) 2022</li>
+                <p style="font-style: italic;">Chang, R., Pahwa, R. S., Wang, J., Chen, L.,<span style="font-weight: bold;">Satini, S.</span>,Wan, K. W., & Hsu, D. (2022, April 7).
+                    Creating semi-supervised learning-based Adaptable Object Detection Models for 
+                    Autonomous Service Robot. SSRN. 
+                    <a class="publication-link" target="_blank" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4075994">https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4075994</a></p>
+                <span class="right-container-arrow"></span>
+            </div>
+        </div>
     </div>
 </section>
 
 <!-- Projects Page-->
 <section id="projects-page">
-    <div class="skills-header">
-        <h1>Projects</h1>
 
-    <div class="portfolio-content">
-        <div class="row">
-            <img src="img/">
+    <div class="container-blur" id="blur">
+        <div class="projects-header">
+            <h1>Projects</h1>
+        </div>
+    
+        <div class="portfolio-content">
+            <div class="row" onclick="toggle('popup')">
+                <img src="assets/mdp_robot_pic.png">
+                <div class="layer">
+                    <h5>Object Detection - Robot Vision</h5>
+                    <p>Trained the robot to detect target images to navigate an obstacle course. Project spanned from Image Collection to Deployment of YOLOv5 into the Raspberry Pi.</p>
+                    <a href="#"></a>
+                </div>
+            </div>
+            <div class="row"onclick="toggle1('popup1')">
+                <img src="assets/pedestrian_detection_pic.png">
+                <div class="layer">
+                    <h5>Final Year Project - Pedestrian Detection</h5>
+                    <p>Developed Novel Modifications to existing data augmentations to increase the YOLOX accuracy while solving the problem of Intra-class Occlusion.</p>
+                    <a href="#">
+                    </a>
+                </div>
+            </div>
+            <div class="row" onclick="toggle2('popup2')">
+                <img src="assets/eeg_signals_pic.png">
+                <div class="layer">
+                    <h5>Emotion Recognition using AI and EEG Signals</h5>
+                    <p>Developed ResNets to detect emotions from synchrosqueeze-transformed EEG Signals.</p>
+                    <a href="#"></a>
+                </div>
+            </div>
+            <div class="row"onclick="toggle3('popup3')">
+                <img src="assets/sentiment_analysis_pic.png" class="Sentiment-img">
+                <div class="layer">
+                    <h5>Sentiment Analysis of Skincare Reviews</h5>
+                    <p>Carried out Sentiment analysis using RNNs to detect whether the reviews were positive or negative.</p>
+                    <a href="#"></a>
+                </div>
+            </div>
+            <div class="row"onclick="toggle4('popup4')">
+                <img src="assets/mask_detection_pic.png">
+                <div class="layer">
+                    <h5>Mask Detection - YOLOv4 (DarkNet)</h5>
+                    <p>Trained and Optimized YOLOv4 Model to detect whether a person was wearing a mask or not.</p>
+                    <a href="#"></a>
+                </div>
+            </div>
+            <div class="row"onclick="toggle5('popup5')">
+                <img src="assets/dashboard_pic.png">
+                <div class="layer">
+                    <h5>Product Analysis Dashboard</h5>
+                    <p>Developed a dashboard using Google Looker Studio to analyse the top 10 products based on their popularity.</p>
+                    <a href="#"></a>
+                </div>
+            </div>
         </div>
     </div>
+
+    <div id="popup">
+        <h3>Object Detection - Robot Vision</h3>
+        <p>Github Link: <a id="github" target="_blank" href="https://github.com/sankeerthana14/MDP---Robot-Vision.git">https://github.com/sankeerthana14/MDP---Robot-Vision.git</a></p>
+        <br>
+        <h4>Task</h4>
+        <p>This project was a part of the Multi-disciplinary Project module at NTU, where we had to build a robot that would be able to navigate its way through an obstacle course while correctly identifying the letters pasted on the obstacles in the shortest amount of time. I was responsible for the Vision of the Robot.</p>
+        <br>
+        <h4>Project Description</h4>
+        <p>This was essentially an end-to-end project spanning from Data Collection to Deployment. </p>
+        <br>
+       <p>Data Collection included collecting the images of the target objects from different angles and distances to account for variety in the dataset. As a part of the Data Processing, this included, removing all the blurry images and labelling the images using LabelImg and applying data augmentations such as Resizing to account for the different size of the object as well as to balance the classes with lesser number of images.
+        To effectively train the model, I split the dataset into Training - Validation - Test Split and trained the YOLOv5 on the Training set.</li>
+        After which, hyperparameter tuning was done by trying different sets of hyperparameters. The best performing set of hyperparameters was then evaluated on the Test Set.</li>
+        The final model was then deployed into the Raspberry Pi.</p>
+        <br>
+        <div class="video-container">
+            <video id="videoPlayer" controls>
+                <source src="assets/object_detection_YOLOV5.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <button id="playPauseButton" class="play">&#9658;</button>
+        </div>
+        
+        <script>
+            const video = document.getElementById('videoPlayer');
+            const playPauseButton = document.getElementById('playPauseButton');
+            
+            playPauseButton.addEventListener('click', function() {
+                if (video.paused) {
+                    video.play();
+                    playPauseButton.innerHTML = '&#10074;&#10074;'; // Display pause icon
+                } else {
+                    video.pause();
+                    playPauseButton.innerHTML = '&#9658;'; // Display play icon
+                }
+                playPauseButton.classList.add('hidden'); // Hide the button
+            });
+        
+            // Update play/pause button based on video state
+            video.addEventListener('play', function() {
+                playPauseButton.innerHTML = '&#10074;&#10074;'; // Display pause icon
+            });
+        
+            video.addEventListener('pause', function() {
+                playPauseButton.innerHTML = '&#9658;'; // Display play icon
+            });
+        
+            function toggle(popup) {
+                var blur = document.getElementById('blur');
+                blur.classList.toggle("active");
+        
+                var popup = document.getElementById('popup');
+                popup.classList.toggle("active");
+
+                // Toggle body scroll lock
+                document.body.classList.toggle("no-scroll");
+
+                // To hide the home button when the screen width reduces
+                var homeButton = document.querySelector('.back-to-home-button');
+                if (popup.classList.contains("active")) {
+                    homeButton.classList.add("hidden");
+                } else {
+                    homeButton.classList.remove("hidden");
+                }
+        
+                // Pause the video when the popup is closed
+                if (!popup.classList.contains("active")) {
+                    video.pause();
+                    playPauseButton.innerHTML = '&#9658;'; // Display play icon
+                }
+            }
+        </script>
+        <br>
+        <div class="close-button">
+            <a href="#projects-page" onclick="toggle('popup')">Close</a>
+        </div>
+    </div>
+    <div id="popup1">
+        <h3>Final Year Project - Pedestrian Detection</h3>
+        <p>Github Link: <a id="github" target="_blank" href="https://github.com/sankeerthana14/fyp-pedestrian-detection.git">https://github.com/sankeerthana14/fyp-pedestrian-detection.git</a></p>
+        <br>
+        <h4>Project Description</h4>
+        <p>This project was my Final Year Project (FYP) where I got the chance to design and execute a 
+            research project from scratch. The scope was Pedestrian Detection and the deliverables of this project 
+            are a Research Report and a Research Poster published in NTU's collections.</p>
+        <br> 
+        <p>After conducting a comprehensive Literature Review where I critically analysed 
+            the current state-of-the computer vision models as well as approaches that were being implemented
+            in the field of Pedestrian Detection so far, <span style="font-weight: bold;">Pedestrian Occlusion</span> specifically
+            intra-class pedestrian occlusion was a pressing problem.
+        </p> 
+        <br>
+        <h4>Key Research Takeways</h4> 
+        <p>In order to mitigate the effects of Intra-class Pedestrian Occlusion, I came up with a <span style="font-weight: bold;">novel 
+            modification</span> to an existing augmentation technique - 'Cutout'. Cutout applies black square patches
+            on the image to mimic an occlusion This allows the model to learn how to handle occluded cases in real-life scenarios.
+            However, this doesn't mitigate the effects of Intra-class Occlusion.</p>
+        <br>
+        <p>Hence, I modified the augmentation to overlay black square patches using an IoU threshold 
+            strategy such that the model learns to focus on the non-occluded part of the pedestrian to 
+            effectively mitigate the effects of Intra-class Occlusion.
+        </p>
+        <br>
+        <p>With this new augmentation, there was a whopping 13% increase in detection accuracy of the YOLOX model
+            that was trained on the Penn-Fudan Pedestrian Detection Dataset.
+        </p>
+        <br>
+        <br>
+        <p style="font-style: italic; font-weight: bold;">Research Poster detailing the key points.</p>
+        <br>
+        <img src="assets/blackout_poster.png" class="blackout-poster">
+        <br>
+        <script>
+        
+            function toggle1(popup1) {
+                var blur = document.getElementById('blur');
+                blur.classList.toggle("active");
+        
+                var popup1 = document.getElementById('popup1');
+                popup1.classList.toggle("active");
+        
+                // Toggle body scroll lock
+                document.body.classList.toggle("no-scroll");
+
+                // To hide the home button when the screen width reduces
+                var homeButton = document.querySelector('.back-to-home-button');
+                if (popup1.classList.contains("active")) {
+                    homeButton.classList.add("hidden");
+                } else {
+                    homeButton.classList.remove("hidden");
+                }
+            }
+        </script>
+        <br>
+        <div class="close-button">
+            <a href="#projects-page" onclick="toggle1('popup1')">Close</a>
+        </div>
+    </div>
+    <div id="popup2">
+        <h3>Emotion Recognition using AI and EEG Signals</h3>
+        <p>Github Link: <a id="github" target="_blank" href="https://github.com/sankeerthana14/EmoRecTFR.git">https://github.com/sankeerthana14/EmoRecTFR.git</a></p>
+        <br>
+        <h4>Project Description</h4>
+        <p>This project was done as a part of NTU's Undergraduate Research Experience on Campus (URECA) Programme. This Programme
+            was for open for selected students to pursue research at an undergraduate level.
+        </p>
+        <br>
+       <p>The Problem to solve was to create a Deep Learning Model that would recognise Emotions from EEG Signals. 
+        The model chosen was ResNet50 and the raw EEG Signals were processed. The processing steps included
+        signal processing steps such as filtering and normalization. Synchrosqueeze Transform was applied to the EEG Signals 
+        and images of the transformed EEG frequency graphs were collated and arranged into a dataset.</p>
+        <br>
+        <p>The ResNet50 model was then trained on this dataset, and hyperparameter tuning was done to find the best results.
+            Please feel free to take a look at the codes via the Github Link above.
+        </p>
+        <script>
+            function toggle2(popup2) {
+                var blur = document.getElementById('blur');
+                blur.classList.toggle("active");
+        
+                var popup2 = document.getElementById('popup2');
+                popup2.classList.toggle("active");
+        
+                // Toggle body scroll lock
+                document.body.classList.toggle("no-scroll");
+
+                // To hide the home button when the screen width reduces
+                var homeButton = document.querySelector('.back-to-home-button');
+                if (popup2.classList.contains("active")) {
+                    homeButton.classList.add("hidden");
+                } else {
+                    homeButton.classList.remove("hidden");
+                }
+            }
+        </script>
+        <br>
+        <div class="close-button">
+            <a href="#projects-page" onclick="toggle2('popup2')">Close</a>
+        </div>
+    </div>
+    <div id="popup3">
+        <h3>Sentiment Analysis of Skincare Reviews</h3>
+        <p>Github Link: <a id="github" target="_blank" href="https://github.com/sankeerthana14/IR-Sentiment-Analysis.git">https://github.com/sankeerthana14/IR-Sentiment-Analysis.git</a></p>
+        <br>
+        <h4>Project Description</h4>
+        <p>In this Project, given crawled dataset compiled from web scraping of e-commerce websites. 
+            I explored various tools/packages to generate labels such as 'Flair', 'Spacy' and 'Vader' and compared
+            their performance and accuracy of the generated labels. 
+        </p>
+        <br>
+        <p>After necessary data processing steps including Tokenization and SMOTE to tackle the problem of
+            imbalanced classes in the dataset, I created a Simple RNN architecture and a CNN architecture 
+            from scratch to classify the reviews into Positive or Negative. Hyperparameter tuning was 
+            also done to get the best results for both the models.
+        </p>
+        <br>
+        <p style="font-style: italic; font-weight: bold;">Example of a review detection by RNN.</p>
+        <br>
+        <div class="sentiment-analysis-det">
+            <p><span style="font-style: italic;">"I have combination sensitive skin, even Cera Ve daily moisturizer causes irritation. This cream is the best I’ve ever felt AND reduces redness. Will definitely be restocking once my first order goes empty!"</span></p>
+            <br>
+            <p style="font-style: italic;">Actual Class:<span style="font-weight: bold;"> Positive</span></p>
+            <p style="font-style: italic;">RNN Detected Class:<span style="font-weight: bold;"> Positive</span></p>
+        </div>
+        <br>
+        <p>Please feel free to take a look at the codes in the Github Link above.</p>
+        <script>
+            function toggle3(popup3) {
+                var blur = document.getElementById('blur');
+                blur.classList.toggle("active");
+        
+                var popup3 = document.getElementById('popup3');
+                popup3.classList.toggle("active");
+        
+                // Toggle body scroll lock
+                document.body.classList.toggle("no-scroll");
+
+                // To hide the home button when the screen width reduces
+                var homeButton = document.querySelector('.back-to-home-button');
+                if (popup3.classList.contains("active")) {
+                    homeButton.classList.add("hidden");
+                } else {
+                    homeButton.classList.remove("hidden");
+                }
+            }
+        </script>
+        <br>
+        <div class="close-button">
+            <a href="#projects-page" onclick="toggle3('popup3')">Close</a>
+        </div>
+    </div>
+    <div id="popup4">
+        <h3>Mask Detection Using YOLOv4 DarkNet Framework</h3>
+        <p>Github Link: <a id="github" target="_blank" href="https://github.com/sankeerthana14/Mask-Detection.git">https://github.com/sankeerthana14/Mask-Detection.git</a></p>
+        <br>
+        <h4>Project Description</h4>
+        <p>Prior to this Project, I had implemented Object Detection Models using Tensorflow and PyTorch.
+            However, in a bid to try something new, through this personal project, I explored training and 
+            evaluating a YOLOv4 model with the DarkNet framework using <span style="font-weight: bold;">Linux Commands</span>. The YOLOv4 model 
+            was trained on the Roboflow Mask Detection dataset and evaluated on the same.
+        </p>
+        <br>
+        <p><span style="font-weight: bold; font-style: italic;">Detections made by the YOLOv4.</span></p>
+        <img src="assets/mask-det-preds.png">
+        <br>
+        <br>
+        <p>Please feel free to take a look at the codes in the Github Link above.</p>
+        <script>
+            function toggle4(popup4) {
+                var blur = document.getElementById('blur');
+                blur.classList.toggle("active");
+        
+                var popup4 = document.getElementById('popup4');
+                popup4.classList.toggle("active");
+        
+                // Toggle body scroll lock
+                document.body.classList.toggle("no-scroll");
+
+                // To hide the home button when the screen width reduces
+                var homeButton = document.querySelector('.back-to-home-button');
+                if (popup4.classList.contains("active")) {
+                    homeButton.classList.add("hidden");
+                } else {
+                    homeButton.classList.remove("hidden");
+                }
+            }
+        </script>
+        <br>
+        <div class="close-button">
+            <a href="#projects-page" onclick="toggle4('popup4')">Close</a>
+        </div>
+    </div>
+    <div id="popup5">
+        <h3>Product Analysis Dashboard</h3>
+        <p>Github Link: <a id="github" target="_blank" href="https://github.com/sankeerthana14/recommendation-system-viz.git">https://github.com/sankeerthana14/recommendation-system-viz.git</a></p>
+        <br>
+        <h4>Project Description</h4>
+        <p>This was essentially an end-to-end project spanning from Data processing to Dashboard Visualization.</p>
+        <br>
+       <p>In this project, I implemented a Popularity Based Recommendation System that returns the top 10 products
+        based on the number of reviews each product has gotten. This is a brute force approach and hence to make it
+        more robust. I have implemented certain steps such as calculating the average rating received and factoring
+        it in when it comes to recommending the top products.
+       </p>
+       <br>
+       <p>I have then visualized the results in the form of a dashboard as dashboard allows us to extract more insights
+        about each product, as well as all the products as a whole. The dashboard has been creted using Google Looker Studio.
+       </p>
+        <br>
+        <div class="video-container">
+            <video id="videoPlayer5" controls>
+                <source src="assets/product_perf_dashboard_popularity_recommendation.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <button id="playPauseButton5" class="play">&#9658;</button>
+        </div>
+        
+        <script>
+            const video5 = document.getElementById('videoPlayer5');
+            const playPauseButton5 = document.getElementById('playPauseButton5');
+        
+            playPauseButton5.addEventListener('click', function() {
+                if (video5.paused) {
+                    video5.play();
+                    playPauseButton5.innerHTML = '&#10074;&#10074;'; // Display pause icon
+                } else {
+                    video5.pause();
+                    playPauseButton5.innerHTML = '&#9658;'; // Display play icon
+                }
+                playPauseButton5.classList.add('hidden'); // Hide the button
+            });
+        
+            // Update play/pause button based on video state
+            video5.addEventListener('play', function() {
+                playPauseButton5.innerHTML = '&#10074;&#10074;'; // Display pause icon
+            });
+        
+            video5.addEventListener('pause', function() {
+                playPauseButton5.innerHTML = '&#9658;'; // Display play icon
+            });
+        
+            function toggle5(popup5) {
+                var blur = document.getElementById('blur');
+                blur.classList.toggle("active");
+        
+                var popup5 = document.getElementById('popup5');
+                popup5.classList.toggle("active");
+        
+                // Toggle body scroll lock
+                document.body.classList.toggle("no-scroll");
+
+                // To hide the home button when the screen width reduces
+                var homeButton = document.querySelector('.back-to-home-button');
+                if (popup5.classList.contains("active")) {
+                    homeButton.classList.add("hidden");
+                } else {
+                    homeButton.classList.remove("hidden");
+                }
+        
+                // Pause the video when the popup is closed
+                if (!popup5.classList.contains("active")) {
+                    video5.pause();
+                    playPauseButton5.innerHTML = '&#9658;'; // Display play icon
+                }
+            }
+        </script>
+        <br>
+        <div class="close-button">
+            <a href="#projects-page" onclick="toggle5('popup5')">Close</a>
+        </div>
     </div>
 
 </section>
@@ -243,10 +813,32 @@
                     </div>
                 </section>
             </div>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                const sections = document.querySelectorAll('.testimonial-section');
+                let currentIndex = 0;
+
+                function showNextSection() {
+                    sections[currentIndex].classList.remove('active');
+                    sections[currentIndex].classList.add('inactive');
+
+                    currentIndex = (currentIndex + 1) % sections.length;
+
+                    sections[currentIndex].classList.remove('inactive');
+                    sections[currentIndex].classList.add('active');
+                }
+
+                // Start the interval to show sections
+                setInterval(showNextSection, 4000); // Adjust the interval as needed
+            });
+
+            </script>
             <div class="controls">
                 <span class="arrow-prev"><i class="fa-solid fa-circle-chevron-left fa-2x" style="color: #ffffff;"></i></span>
                 <span class="arrow-next"><i class="fa-solid fa-circle-chevron-right fa-2x" style="color: #ffffff;"></i></span>
             </div>
+
         </div>
     </div>
     <!-- Link to general JS Script -->
@@ -259,27 +851,34 @@
         <h1>Contact</h1>
     </div>
     <div class="subheading">
-        <p>Get in Touch with me :)</p>
+        <p>Feel free to reach out to me :)</p>
     </div>
     <div class="contact-info">
         <div class="card">
             <div class="contact-icon">
-                <i class="fa-solid fa-envelope fa-4x" style="color: #ffffff;"></i>
+                <a href="mailto:sankeerthana.satini3@gmail.com"><i class="fa-solid fa-envelope fa-4x" style="color: #ffffff;"></i></a>
             </div>
-            <p>sankeerthana.satini3@  gmail.com</p>
+            <p><a href="mailto:sankeerthana.satini3@gmail.com" target="_blank">Drop me an email!</a></p>
         </div>
         <div class="card">
             <div class="contact-icon">
-                <i class="fa-brands fa-linkedin fa-4x" style="color: #ffffff;"></i>
+                <a a href="https://www.linkedin.com/in/satinisankeerthana" target="_blank"><i class="fa-brands fa-linkedin fa-4x" style="color: #ffffff;"></i></a>
             </div>
-            <p><a href="https://www.linkedin.com/in/satinisankeerthana" target="_blank">Click here to say Hi on Linkedin!</a></p>
+            <p><a href="https://www.linkedin.com/in/satinisankeerthana" target="_blank">Say Hi on Linkedin!</a></p>
         </div>
         <div class="card">
             <div class="contact-icon">
-                <i class="fa-sharp fa-solid fa-location-dot fa-4x" style="color: #ffffff;"></i>
+                <a a href="https://github.com/sankeerthana14/Data-Science-and-AI.git" target="_blank"><i class="fa-brands fa-github fa-4x" style="color: #ffffff;"></i></a>
             </div>
-            <p>Singapore</p>
+            <p><a href="https://github.com/sankeerthana14/Data-Science-and-AI.git" target="_blank">Github Repo</a></p>
         </div>
+        <div class="card">
+            <div class="contact-icon">
+                <a a href="https://www.upwork.com/freelancers/~01f89d0e60eecee9c5" target="_blank"><i class="fa-brands fa-upwork fa-4x" style="color: #ffffff;"></i></a>
+            </div>
+            <p><a href="https://www.upwork.com/freelancers/~01f89d0e60eecee9c5" target="_blank">Freelance Services</a></p>
+        </div>
+        
     </div>
 </section>
 </html>
